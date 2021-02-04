@@ -1,13 +1,14 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 const glob = require('glob-all');
 const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 
 // Paths that will be checked by plugin that deletes unnecessary CSS
-const PURGE_PATHS = {
-    resources: path.join(__dirname, 'resources') + '/**/*',
-    indexHtml: path.join(__dirname, 'public', 'index.html')
-};
+// const PURGE_PATHS = {
+//     resources: path.join(__dirname, 'resources') + '/**/*',
+//     indexHtml: path.join(__dirname, 'public', 'index.html')
+// };
 
 module.exports = {
     mode: 'production',
@@ -23,9 +24,9 @@ module.exports = {
         new webpack.ProvidePlugin({
             'React': 'react'
         }),
-        new PurgeCSSPlugin({
-            paths: glob.sync([PURGE_PATHS.resources, PURGE_PATHS.indexHtml], { nodir: true })
-        })
+        // new PurgeCSSPlugin({
+        //     paths: glob.sync([PURGE_PATHS.resources, PURGE_PATHS.indexHtml], { nodir: true })
+        // })
     ],
     module: {
         rules: [
