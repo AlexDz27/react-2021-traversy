@@ -29,6 +29,11 @@ const App = () => {
   const [showAddTask, setShowAddTask] = useState(true);
   const [tasks, setTasks] = useState(tasksData);
 
+  // Restore default tasks
+  const restoreTasks = () => {
+    setTasks(tasksData);
+  }
+
   // Add task
   const addTask = (task) => {
     let id;
@@ -61,7 +66,7 @@ const App = () => {
       <Header onAdd={() => setShowAddTask(!showAddTask)} isShowingForm={showAddTask} />
       {showAddTask && <AddTask onAdd={addTask} />}
       <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
-      <Footer />
+      <Footer onRestore={restoreTasks} />
     </div>
   )
 }
