@@ -39,7 +39,7 @@ const App = () => {
     }
     const newTask = {id, ...task};
 
-    setTasks([...tasks, newTask]);
+    setTasks([newTask, ...tasks]);
   }
 
   // Delete task
