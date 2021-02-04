@@ -25,7 +25,7 @@ const App = () => {
     },
   ];
 
-  const [showAddTask, setShowAddTask] = useState(false);
+  const [showAddTask, setShowAddTask] = useState(true);
   const [tasks, setTasks] = useState(tasksData);
 
   // Add task
