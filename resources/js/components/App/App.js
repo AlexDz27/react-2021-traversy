@@ -2,6 +2,7 @@ import {useState} from 'react';
 import Header from "../Header/Header";
 import Tasks from "../Tasks/Tasks";
 import AddTask from "../forms/AddTask/AddTask";
+import Footer from "../Footer/Footer";
 
 const App = () => {
   const tasksData = [
@@ -60,6 +61,7 @@ const App = () => {
       <Header onAdd={() => setShowAddTask(!showAddTask)} isShowingForm={showAddTask} />
       {showAddTask && <AddTask onAdd={addTask} />}
       <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
+      <Footer />
     </div>
   )
 }
