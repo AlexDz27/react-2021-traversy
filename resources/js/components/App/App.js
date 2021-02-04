@@ -30,7 +30,12 @@ const App = () => {
 
   // Add task
   const addTask = (task) => {
-    const id = tasks[tasks.length - 1].id + 1;
+    let id;
+    if (tasks.length > 0) {
+      id = tasks[tasks.length - 1].id + 1;
+    } else {
+      id = 1;
+    }
     const newTask = {id, ...task};
 
     setTasks([...tasks, newTask]);
