@@ -1,8 +1,10 @@
 import {useState} from 'react';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Header from "../Header/Header";
 import Tasks from "../Tasks/Tasks";
 import AddTask from "../forms/AddTask/AddTask";
 import Footer from "../Footer/Footer";
+import About from "../About/About";
 
 const App = () => {
   const tasksData = [
@@ -62,12 +64,22 @@ const App = () => {
   }
 
   return (
-    <div className="container">
-      <Header onAdd={() => setShowAddTask(!showAddTask)} isShowingForm={showAddTask} />
-      {showAddTask && <AddTask onAdd={addTask} />}
-      <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
-      <Footer onRestore={restoreTasks} />
-    </div>
+    <Router>
+      <div className="container">
+        <Switch>
+          <Route path="/" exact>
+            <Header onAdd={() => setShowAddTask(!showAddTask)} isShowingForm={showAddTask} />
+            {showAddTask && <AddTask onAdd={addTask} />}
+            <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
+            <Footer onRestore={restoreTasks} />
+          </Route>
+
+          <Route path="/about">
+            <About />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   )
 }
 
